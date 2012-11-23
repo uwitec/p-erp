@@ -581,7 +581,7 @@
 }
 .layout-split-proxy-h{
 	position:absolute;
-	width:5px;
+	width:2px;
 	background:#ccc;
 	font-size:1px;
 	cursor:e-resize;
@@ -604,10 +604,10 @@
 	border-top:5px solid #D2E0F2;
 }
 .layout-split-east{
-	border-left:5px solid #D2E0F2;
+	border-left:1px solid #D2E0F2;
 }
 .layout-split-west{
-	border-right:5px solid #D2E0F2;
+	border-right:1px solid #D2E0F2;
 }
 .layout-mask{
 	position:absolute;
@@ -943,10 +943,10 @@ a.m-btn-plain-active{
 	background:url('images/panel_tools.gif') no-repeat -16px -16px;
 }
 .panel-tool-collapse{
-	background:url('images/panel_tools.gif') no-repeat -32px 0;
+	background:url('images/panel_tool_collapse.gif') no-repeat;
 }
 .panel-tool-expand{
-	background:url('images/panel_tools.gif') no-repeat -32px -16px;
+	background:url('images/panel_tool_expand.gif') no-repeat;
 }
 .panel-loading{
 	padding:11px 0px 10px 30px;
@@ -1244,7 +1244,7 @@ a.s-btn-plain-active .s-btn-downarrow{
 	font-size:1px;
 	display:none;
 	cursor:pointer;
-	background:#E0ECFF url('images/tabs_leftarrow.png') no-repeat center center;
+	background:#E0ECFF url('images/tabs_leftarrow.png') no-repeat 1px 5px;
 }
 .tabs-scroller-right{
 	position:absolute;
@@ -1257,7 +1257,7 @@ a.s-btn-plain-active .s-btn-downarrow{
 	font-size:1px;
 	display:none;
 	cursor:pointer;
-	background:#E0ECFF url('images/tabs_rightarrow.png') no-repeat center center;
+	background:#E0ECFF url('images/tabs_rightarrow.png') no-repeat 2px 5px;
 }
 .tabs-tool{
 	position:absolute;
@@ -1559,10 +1559,10 @@ a.s-btn-plain-active .s-btn-downarrow{
 	z-index:9900000;
 }
 .tree-dnd-yes{
-	background:#fff url('images/tree_dnd_yes.png') no-repeat 0 center;
+	background:url('images/tree_dnd_yes.png') no-repeat 0 center;
 }
 .tree-dnd-no{
-	background:#fff url('images/tree_dnd_no.png') no-repeat 0 center;
+	background:url('images/tree_dnd_no.png') no-repeat 0 center;
 }
 .tree-node-top{
 	border-top:1px dotted red;
