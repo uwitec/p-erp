@@ -1,6 +1,10 @@
 <?php
-// 本类由系统自动生成，仅供测试用途
-class IndexAction extends Action {
+/*
+ * 静态内容生产模块
+ * 页面静态化 
+ * 2012-11-28
+ */
+class HtmlAction extends Action {
     public function index(){
 		$this->display();
     }
