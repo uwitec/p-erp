@@ -1,4 +1,5 @@
 <?php
+define('GK_ROOT', dirname(__FILE__));
 define('APP_NAME','p_erp');
 define('APP_PATH','./p_erp/');
 define('APP_DEBUG',true);
