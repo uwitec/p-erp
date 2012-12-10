@@ -1,0 +1,102 @@
+<include file="Public:header" />
+	
+</head>
+<body>
+	<h2>添加数据表</h2>
+	<div class="demo-info" style="margin-bottom:10px">
+		<div class="demo-tip icon-tip"></div>
+		<div>添加数据表配置信息</div>
+	</div>
+	
+	<form id="ff" method="post" action="__APP__/SqldataField/adds">  
+        <div>  
+            <label for="title">名称:</label>  
+            <input class="easyui-validatebox" type="text" name="title" id="title" data-options="required:true" />  
+        </div>  
+        <div>  
+            <label for="type">类型:</label>  
+			<select id="type" class="easyui-combobox" name="type" style="width:200px;">  
+				<option value="aa">tinyint</option>  
+				<option>smaillint</option>  
+				<option>mediumint</option>  
+				<option>int</option>  
+				<option>integer</option>  
+				<option>bigint</option>
+				<option>bit</option>
+				<option>real</option>
+				<option>double</option>
+				<option>float</option>
+				<option>decimal</option>
+				<option>numeric</option>
+				<option>char</option>
+				<option>varchar</option>
+				<option>date</option>
+				<option>time</option>
+				<option>timestamp</option>
+				<option>datetime</option>
+				<option>tinyblob</option>
+				<option>blob</option>
+				<option>mediumblob</option>
+				<option>longblob</option>
+				<option>tinytext</option>
+				<option>text</option>
+				<option>mediumtext</option>
+				<option>longtext</option>
+				<option>enum</option>
+				<option>set</option>
+				<option>binary</option>
+				<option>varbinary</option>
+			</select>
+        </div>  
+		
+		<div>  
+            <label for="email">长度:</label>  
+            <input class="easyui-validatebox" type="text" name="length" id='length' data-options="required:true" />  
+        </div>  
+		<div>  
+            <label for="email">是否允许空值:</label>  
+            <select id="is_null"></select>
+        </div>  
+		<div id="sp" style="">
+			<div style="color:#99BBE8;background:#fafafa;padding:5px;">Select a language</div>
+			<input type="radio" name="lang" value="01"><span>Java</span><br/>
+			<input type="radio" name="lang" value="02"><span>C#</span><br/>
+			<input type="radio" name="lang" value="03"><span>Ruby</span><br/>
+			<input type="radio" name="lang" value="04"><span>Basic</span><br/>
+			<input type="radio" name="lang" value="05"><span>Fortran</span>
+		</div>
+		<div>  
+            <label for="email">默认值:</label>  
+            <input class="easyui-validatebox" type="text" name="default" id="default" data-options="required:true" />  
+        </div>  
+		
+		<div>
+			<input type="submit" value="提交">
+		</div>
+        
+    </form>  
+	
+	<script>
+		$(function(){
+			$('#is_null').combo({  
+				required:true,
+				editable:false
+			}); 
+			$('#sp').appendTo($('#is_null').combo('panel'));
+			$('#sp input').click(function(){
+				var v = $(this).val();
+				var s = $(this).next('span').text();
+				$('#is_null').combo('setValue', v).combo('setText', s).combo('hidePanel');
+			});
+		});
+		
+		function disable(){
+			$('#nn').numberbox('disable');
+		}
+		function enable(){
+			$('#nn').numberbox('enable');
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<include file="Public:header" />
+<script>
+		$(function(){
+			$('#test').treegrid({
+				title:'数据库表信息',
+				iconCls:'icon-ok',
+				width:700,
+				height:350,
+				rownumbers: true,
+				animate:true,
+				collapsible:true,
+				fitColumns:true,
+				resizable:true,
+				url: '__APP__/SqldataField/getlist',
+				idField:'id',
+				treeField:'name',
+				showFooter:true,
+				rowStyler:function(row){
+					if (row.persons > 1){
+						return 'background:#AAD684;color:#fff';
+					}
+				},
+				columns:[[
+	                {field:'title',title:'名称',width:180},
+					{field:'type',title:'类型',width:60,align:'right'},
+					{field:'length',title:'长度',width:80},
+					{field:'is_null',title:'是否允许空值',width:80,rowspan:2},
+					{field:'default',title:'默认值',width:120,rowspan:2,
+					    formatter:function(value){
+					    	if (value){
+						    	var s = '<div style="width:100%;border:1px solid #ccc">' +
+						    			'<div style="width:' + value + '%;">' + value + ' ' + '</div>'
+						    			'</div>';
+						    	return s;
+					    	} else {
+						    	return '';
+					    	}
+				    	}
+					},
+					{field:'is_pri',title:'是否主键',width:80,rowspan:2},
+					{field:'ctime',title:'创建时间',width:80,rowspan:2}
+				]]
+			});
+			
+			$('#tt').tabs({  
+				border:false,  
+				onSelect:function(title){  
+					
+				}  
+			}); 
+			
+			$('#dd').dialog({  
+				title: 'My Dialog',  
+				width: 400,  
+				height: 200,  
+				closed: true
+			});  
+			
+			$('#is_null').combo({  
+				required:true,
+				editable:false
+			}); 
+			$('#sp').appendTo($('#is_null').combo('panel'));
+			$('#sp input').click(function(){
+				var v = $(this).val();
+				var s = $(this).next('span').text();
+				$('#is_null').combo('setValue', v).combo('setText', s).combo('hidePanel');
+			});
+			
+		});
+		
+		function editFields(){
+			var node = $('#test').treegrid('getSelected');
+
+			if (node){
+				var h = $(window.parent.document).find("#tabs");
+				
+				$('#dd').dialog({  
+					title: 'My Dialog',  
+					width: 500,  
+					height: 400,  
+					closed: false,  
+					cache: false,  
+					href: '__APP__/SqldataField/add',  
+					modal: true  
+				});  
+			}
+		}
+		
+		function addTable(){
+			$('#dd').dialog({  
+				title: '添加数据表',  
+				width: 500,  
+				height: 400,  
+				closed: false,  
+				cache: false,  
+				href: '__APP__/SqldataField/add',  
+				modal: false  
+			});  
+		}
+		
+		function editTable(){
+			var node = $('#test').treegrid('getSelected');
+			if (node){
+				
+				$('#dd').dialog({  
+					title: '编辑数据表',  
+					width: 500,  
+					height: 400,  
+					closed: false,  
+					cache: false,  
+					href: '__APP__/SqldataField/edit/id/' + node.id,  
+					modal: true  
+				});  
+			}else{
+				$.messager.alert('提示','请选择数据项！');  
+			}
+		}
+	</script>
+</head>
+<body>
+	<h2>数据库表信息</h2>
+	<div class="demo-info" style="margin-bottom:10px">
+		<div class="demo-tip icon-tip"></div>
+		<div>创建的所有数据表信息</div>
+	</div>
+	
+	<div style="margin:10px 0;">
+		<a href="#" class="easyui-linkbutton" onclick="addTable()">添加</a> 
+		<a href="#" class="easyui-linkbutton" onclick="editTable()">编辑</a> 
+	</div>
+	<table id="test"></table>
+	
+	<div id="dd" class="easyui-dialog" title="My Dialog" style="width:400px;height:200px;"  
+            data-options="iconCls:'icon-save',resizable:true,modal:true">  
+        Dialog Content.  
+    </div>  
+	
+</body>
+</html>

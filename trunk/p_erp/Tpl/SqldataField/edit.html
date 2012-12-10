@@ -1,0 +1,47 @@
+<include file="Public:header" />
+	<script>
+		function disable(){
+			$('#nn').numberbox('disable');
+		}
+		function enable(){
+			$('#nn').numberbox('enable');
+		}
+	</script>
+</head>
+<body>
+	<h2>编辑数据表</h2>
+	<div class="demo-info" style="margin-bottom:10px">
+		<div class="demo-tip icon-tip"></div>
+		<div>编辑数据表配置信息</div>
+	</div>
+	
+	<form id="ff" method="post" action="__APP__/SqldataField/edits"> 
+	<input type="hidden" name="id" id="id" value="{$data.id}" />
+       <div>  
+            <label for="name">名称:</label>  
+            <input class="easyui-validatebox" type="text" name="title" id="title" data-options="required:true" value="{$data.title}"/>  
+        </div>  
+        <div>  
+            <label for="email">类型:</label>  
+            <input class="easyui-validatebox" type="text" name="type" id="type" data-options="required:true" value="{$data.type}"/>  
+        </div>  
+		<div>  
+            <label for="email">长度:</label>  
+            <input class="easyui-validatebox" type="text" name="length" id='length' data-options="required:true" value="{$data.length}"/>  
+        </div>  
+		<div>  
+            <label for="email">是否允许空值:</label>  
+            <input class="easyui-validatebox" type="text" name="is_null" id="is_null" data-options="required:true" value="{$data.is_null}"/>  
+        </div>  
+		<div>  
+            <label for="email">默认值:</label>  
+            <input class="easyui-validatebox" type="text" name="default" id="default" data-options="required:true" value="{$data.default}"/>  
+        </div>  
+		<div>
+			<input type="submit" value="提交">
+		</div>
+        
+    </form>  
+	
+</body>
+</html>
