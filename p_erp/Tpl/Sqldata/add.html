@@ -1,0 +1,42 @@
+<include file="Public:header" />
+	<script>
+		function disable(){
+			$('#nn').numberbox('disable');
+		}
+		function enable(){
+			$('#nn').numberbox('enable');
+		}
+	</script>
+</head>
+<body>
+	<h2>添加数据表</h2>
+	<div class="demo-info" style="margin-bottom:10px">
+		<div class="demo-tip icon-tip"></div>
+		<div>添加数据表配置信息</div>
+	</div>
+	
+	<form id="ff" method="post" action="__APP__/Sqldata/adds">  
+        <div>  
+            <label for="name">表名称:</label>  
+            <input class="easyui-validatebox" type="text" name="tablename" id="tablename" data-options="required:true" />  
+        </div>  
+        <div>  
+            <label for="email">数据表描述:</label>  
+            <input class="easyui-validatebox" type="text" name="tabletitle" id="tabletitle" data-options="required:true" />  
+        </div>  
+		<div>  
+            <label for="email">数据表前缀:</label>  
+            <input class="easyui-validatebox" type="text" name="prefix" id='prefix' data-options="required:true" />  
+        </div>  
+		<div>  
+            <label for="email">所在数据库:</label>  
+            <input class="easyui-validatebox" type="text" name="dbname" id="dbname" data-options="required:true" />  
+        </div>  
+		<div>
+			<input type="submit" value="提交">
+		</div>
+        
+    </form>  
+	
+</body>
+</html>

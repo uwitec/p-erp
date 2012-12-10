@@ -1,0 +1,43 @@
+<include file="Public:header" />
+	<script>
+		function disable(){
+			$('#nn').numberbox('disable');
+		}
+		function enable(){
+			$('#nn').numberbox('enable');
+		}
+	</script>
+</head>
+<body>
+	<h2>编辑数据表</h2>
+	<div class="demo-info" style="margin-bottom:10px">
+		<div class="demo-tip icon-tip"></div>
+		<div>编辑数据表配置信息</div>
+	</div>
+	
+	<form id="ff" method="post" action="__APP__/Sqldata/edits"> 
+	<input type="hidden" name="id" id="id" value="{$data.id}" />
+        <div>  
+            <label for="name">表名称:</label>  
+            <input class="easyui-validatebox" type="text" name="tablename" id="tablename" data-options="required:true" value="{$data.tablename}"/>  
+        </div>  
+        <div>  
+            <label for="email">数据表描述:</label>  
+            <input class="easyui-validatebox" type="text" name="tabletitle" id="tabletitle" data-options="required:true" value="{$data.tabletitle}"/>  
+        </div>  
+		<div>  
+            <label for="email">数据表前缀:</label>  
+            <input class="easyui-validatebox" type="text" name="prefix" id='prefix' data-options="required:true" value="{$data.prefix}"/>  
+        </div>  
+		<div>  
+            <label for="email">所在数据库:</label>  
+            <input class="easyui-validatebox" type="text" name="dbname" id="dbname" data-options="required:true" value="{$data.dbname}"/>  
+        </div>  
+		<div>
+			<input type="submit" value="提交">
+		</div>
+        
+    </form>  
+	
+</body>
+</html>

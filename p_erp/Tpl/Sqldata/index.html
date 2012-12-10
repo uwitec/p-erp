@@ -1,0 +1,131 @@
+<include file="Public:header" />
+<script>
+		$(function(){
+			$('#test').treegrid({
+				title:'数据库表信息',
+				iconCls:'icon-ok',
+				width:700,
+				height:350,
+				rownumbers: true,
+				animate:true,
+				collapsible:true,
+				fitColumns:true,
+				resizable:true,
+				url: '__APP__/Sqldata/getlist',
+				idField:'id',
+				treeField:'name',
+				showFooter:true,
+				rowStyler:function(row){
+					if (row.persons > 1){
+						return 'background:#AAD684;color:#fff';
+					}
+				},
+				columns:[[
+	                {field:'tablename',title:'表名称',width:180},
+					{field:'tabletitle',title:'表描述',width:60,align:'right'},
+					{field:'prefix',title:'前缀',width:80},
+					{field:'dbname',title:'所在数据库',width:80,rowspan:2},
+					{field:'ctime',title:'创建时间',width:120,rowspan:2,
+					    formatter:function(value){
+					    	if (value){
+						    	var s = '<div style="width:100%;border:1px solid #ccc">' +
+						    			'<div style="width:' + value + '%;">' + value + ' ' + '</div>'
+						    			'</div>';
+						    	return s;
+					    	} else {
+						    	return '';
+					    	}
+				    	}
+					}
+				]]
+			});
+			
+			$('#tt').tabs({  
+				border:false,  
+				onSelect:function(title){  
+					//alert(title+' is selected');  
+				}  
+			}); 
+			
+			$('#dd').dialog({  
+				title: 'My Dialog',  
+				width: 400,  
+				height: 200,  
+				closed: true
+			});  
+			
+		});
+		
+		function editFields(){
+			var node = $('#test').treegrid('getSelected');
+			//alert(node.id);
+			if (node){
+				//alert(node);
+				//$('#test').treegrid('beginEdit',node.id);
+				//var t = $("#conFrame").html();
+				//var h = $("#conFrame",parent.document.body).children().find("tabs");
+				var h = $(window.parent.document).find("#tabs");
+				//var h = window.frames["conFrame"].html();
+				//alert(h);
+				
+				$('#dd').dialog({  
+					title: 'My Dialog',  
+					width: 500,  
+					height: 400,  
+					closed: false,  
+					cache: false,  
+					href: '__APP__/Sqldata/add',  
+					modal: true  
+				});  
+			}
+		}
+		
+		function addTable(){
+			$('#dd').dialog({  
+				title: '添加数据表',  
+				width: 500,  
+				height: 400,  
+				closed: false,  
+				cache: false,  
+				href: '__APP__/Sqldata/add',  
+				modal: true  
+			});  
+		}
+		
+		function editTable(){
+			var node = $('#test').treegrid('getSelected');
+			if (node){
+				
+				$('#dd').dialog({  
+					title: '编辑数据表',  
+					width: 500,  
+					height: 400,  
+					closed: false,  
+					cache: false,  
+					href: '__APP__/Sqldata/edit/id/' + node.id,  
+					modal: true  
+				});  
+			}else{
+				$.messager.alert('提示','请选择数据项！');  
+			}
+		}
+	</script>
+</head>
+
+	<h2>数据库表信息</h2>
+	<div class="demo-info" style="margin-bottom:10px">
+		<div class="demo-tip icon-tip"></div>
+		<div>创建的所有数据表信息</div>
+	</div>
+	
+	<div style="margin:10px 0;">
+		<a href="#" class="easyui-linkbutton" onclick="addTable()">添加</a> 
+		<a href="#" class="easyui-linkbutton" onclick="editTable()">编辑</a> 
+		<a href="#" class="easyui-linkbutton" onclick="editFields()">编辑字段</a> 
+	</div>
+	<table id="test"></table>
+	
+	<div id="dd" class="easyui-dialog" title="My Dialog" style="width:400px;height:200px;"  
+            data-options="iconCls:'icon-save',resizable:true,modal:true">  
+        Dialog Content.  
+    </div>  
